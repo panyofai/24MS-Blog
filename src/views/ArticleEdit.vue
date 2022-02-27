@@ -4,7 +4,7 @@
 	       <el-button @click="goBack">返回</el-button>
 	   </div>
 	   <div class="edit_title">标题</div>
-	   <el-input v-model="title" placeholder="请输入标题"></el-input>
+	   <el-input v-model="title" placeholder="请输入标题1"></el-input>
 	   <div class="edit_title">文章内容 Markdown</div>
 	   <div class="markdown">
 	        <mavon-editor v-model="content"/>
