@@ -36,8 +36,12 @@
         data() {
             return {
                 articleList:[{
-					id:3,
+					articleIndex:1,
 					title: 'node',
+					create_time: '2022-2-25 12:43:48'
+				}, {
+					articleIndex:2,
+					title: '艳阳天',
 					create_time: '2022-2-25 12:43:48'
 				}]
             }
@@ -46,45 +50,60 @@
             handleAdd() {
                 this.$router.push({name:'ArticleEdit'})
             },
+			// window.open() 新增一个窗口并跳转
             handleLook(row) {
-                let id = row.id
+                let id = row.articleIndex
                 window.open('#/blog-detail/'+id)
             },
             handleEdit(row) {
-                let id = row.id;
+                let id = row.articleIndex;
                 this.$router.push({path:`/article/edit/${id}`})
             },
-            // handleDelect(row){
-            //     let id = row.id
-            //     this.$confirm('此操作将删除该文章, 是否继续?', '提示', {
-            //         confirmButtonText: '确定',
-            //         cancelButtonText: '取消',
-            //         type: 'warning'
-            //     }).then(() => {
-            //         this.$axios.post('/api/article/delete',{
-            //             article_id:id
-            //         })
-            //         .then(res => {
-            //             if(res.data.code === 0){
-            //                 //发起删除请求操作
-            //                 this.$message({
-            //                     type: 'success',
-            //                     message: `${id}文章删除成功!`
-            //                 });
-            //                 setTimeout(() => {
-            //                     location.reload()
-            //                 }, 1500);  
-            //             }
-            //         }).catch(e=>{
-            //             console.log(e)
-            //         })
-            //     }).catch(() => {
-            //         this.$message({
-            //             type: 'info',
-            //             message: '已取消删除'
-            //         });          
-            //     });
-            // },
+			
+            handleDelect(row){
+                let id = row.articleIndex
+                this.$confirm('此操作将删除该文章, 是否继续?', '提示', {
+                    // confirmButtonText: '确定',
+                    // cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+					this.$message({
+						type: 'success',
+						message: `${id}删除成功！`
+					});
+				}).catch(() => {
+					this.$message({
+						type: 'info',
+						message: '已取消删除'
+					})
+				})
+				// .then(() => {
+    //                 this.$axios.post('/api/article/delete',{
+    //                     article_id:id
+    //                 })
+    //                 .then(res => {
+    //                     if(res.data.code === 0){
+    //                         //发起删除请求操作
+    //                         this.$message({
+    //                             type: 'success',
+    //                             message: `${id}文章删除成功!`
+    //                         });
+    //                         setTimeout(() => {
+    //                             location.reload()
+    //                         }, 1500);  
+    //                     }
+    //                 }).catch(e=>{
+    //                     console.log(e)
+    //                 })
+    //             }).catch(() => {
+    //                 this.$message({
+    //                     type: 'info',
+    //                     message: '已取消删除'
+    //                 });          
+    //             });
+            },
+			
+			
             getMyBlogList(){
                 this.$axios.get('/api/article/myList')
                     .then(res => {
