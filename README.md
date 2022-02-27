@@ -1,12 +1,12 @@
 <<<<<<< HEAD
 # msapp-node-v2
 
-## Project setup
+## 运行前置
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Run~
 ```
 npm run serve
 ```
