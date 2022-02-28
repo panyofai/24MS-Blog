@@ -99,17 +99,28 @@
                 });
             },
             signUp() {
-                this.$refs['regForm'].validate((valid) => {
-                    if (valid) {
-                        this.$axios.post('/api/user/register',this.regForm)
-                            .then(res => {
-                                console.log(res)
-                            })
-                    } else {
-                        console.log('error submit!!');
-                        return false;
-                    }
-                });
+				this.$refs['regForm'].validate((valid) => {
+					if(valid) {
+						this.$axios.post('http://127.0.0.1:3000/api/user/register', this.regForm).then(res => {
+							console.log('请求返回：',res);
+						})
+					} else {
+						console.log('err');
+					}
+				})
+				
+				
+                // this.$refs['regForm'].validate((valid) => {
+                //     if (valid) {
+                //         this.$axios.post('/api/user/register',this.regForm)
+                //             .then(res => {
+                //                 console.log(res)
+                //             })
+                //     } else {
+                //         console.log('error submit!!');
+                //         return false;
+                //     }
+                // });
             },
             toSignUp(){
                 this.status = 2
