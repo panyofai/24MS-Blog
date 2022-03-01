@@ -11,7 +11,9 @@ import '@/assets/font/iconfont.css'
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 import userAction from './common/login.js'
+import setAxios from './setAxios.js'
 
+setAxios()
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
 Vue.use(ElementUI);

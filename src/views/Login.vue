@@ -76,32 +76,48 @@
 			
 			
             signIn() {
-                this.$refs['loginForm'].validate((valid) => {
-                    if (valid) {
-                        this.loading = true
-                        this.$axios.post('/api/user/login',this.loginForm)
-                            .then(res => {
-                                let result = res.data
-                                if(result.code === 0) {
-                                    Cookie.set('token',result.token)
-                                    this.$store.commit('setToken',result.token)
-                                    this.$store.commit('changIsSignIn',1)
-                                    setTimeout(() => {
-                                        this.loading = false
-                                        this.$router.push({name:'home'}) 
-                                    }, 1500);
-                                }
-                            })
-                    } else {
-                        console.log('error submit!!');
-                        return false;
-                    }
-                });
+				this.$refs['loginForm'].validate((valid) => {
+					if(valid) {
+						this.loading = true
+						this.$axios.post('/api/user/login', this.loginForm).then(res => {
+							console.log('登录信息>>>',res);
+							// let result = res
+						})
+						setTimeout(() => {
+							this.loading = false
+							// this.$store.commit('changeIsSignIn',1)
+							// this.$router.push({name:'home'})
+						}, 1500);
+					}
+				})
+				
+				
+                // this.$refs['loginForm'].validate((valid) => {
+                //     if (valid) {
+                //         this.loading = true
+                //         this.$axios.post('/api/user/login',this.loginForm)
+                //             .then(res => {
+                //                 let result = res.data
+                //                 if(result.code === 0) {
+                //                     Cookie.set('token',result.token)
+                //                     this.$store.commit('setToken',result.token)
+                //                     this.$store.commit('changIsSignIn',1)
+                //                     setTimeout(() => {
+                //                         this.loading = false
+                //                         this.$router.push({name:'home'}) 
+                //                     }, 1500);
+                //                 }
+                //             })
+                //     } else {
+                //         console.log('error submit!!');
+                //         return false;
+                //     }
+                // });
             },
             signUp() {
 				this.$refs['regForm'].validate((valid) => {
 					if (valid) {
-						this.$axios.post('http://127.0.0.1:3000/api/user/register', this.regForm)
+						this.$axios.post('/api/user/register', this.regForm)
 						.then(res => {
 							console.log('请求返回：',res);
 						})
