@@ -12,13 +12,16 @@ import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 import userAction from './common/login.js'
 import setAxios from './setAxios.js'
+import FKTable from 'fk-table'
+
 
 setAxios()
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
 Vue.use(ElementUI);
 Vue.use(mavonEditor);
-Vue.use(userAction)
+Vue.use(userAction);
+Vue.use(FKTable)
 
 // vuex丢失拦截
 router.beforeEach((to,from,next)=>{

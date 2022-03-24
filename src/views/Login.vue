@@ -36,7 +36,7 @@
 </template>
 
 <script>
-    // import Cookie from 'js-cookie'
+    import Cookie from 'js-cookie'
     export default {
         data() {
             return {
@@ -74,20 +74,25 @@
         },
         methods:{
 			
-			
             signIn() {
 				this.$refs['loginForm'].validate((valid) => {
 					if(valid) {
 						this.loading = true
 						this.$axios.post('/api/user/login', this.loginForm).then(res => {
-							console.log('登录信息>>>',res);
-							// let result = res
+							let result = res.data
+							console.log('登录信息1>>>',result);
+							if(result.code === 0) {
+								// 登录成功---将token存到vuex---登录状态更新
+								Cookie.set('token', result.token)
+								this.$store.commit('setToken', result.token)
+								this.$store.commit('changeIsSignIn',1)
+								setTimeout(() => {
+									this.loading = false
+									// 登录成功后跳转到**页面
+									this.$router.push({name:'home'})
+								}, 1500);
+							}
 						})
-						setTimeout(() => {
-							this.loading = false
-							// this.$store.commit('changeIsSignIn',1)
-							// this.$router.push({name:'home'})
-						}, 1500);
 					}
 				})
 				

@@ -7,6 +7,13 @@
 			</router-link>
 			<p class="date">2020-03-16</p>
 		</div>
+		<div class="card">
+			<!-- 博客id+1，实现 -->
+			<router-link :to="'/ImproTable/table1'">
+				<p class="tit">表格</p>
+			</router-link>
+			<p class="date">2020-03-16</p>
+		</div>
 	</div>
 </template>
 
