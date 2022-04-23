@@ -9,15 +9,29 @@
 		</div>
 		<div class="card">
 			<!-- 博客id+1，实现 -->
-			<router-link :to="'/ImproTable/table1'">
+			<!-- <router-link :to="'/ImproTable/table1'">
 				<p class="tit">表格</p>
-			</router-link>
+			</router-link> -->
+			<p class="tit" @click="goPage()">表格</p>
 			<p class="date">2020-03-16</p>
 		</div>
 	</div>
 </template>
 
 <script>
+	export default {
+		data() {
+			return {
+				key: value
+			}
+		},
+		
+		methods: {
+			goPage(name) {
+				
+			}
+		},
+	}
 </script>
 
 <style lang="scss" scoped>
