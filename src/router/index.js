@@ -46,9 +46,14 @@ const routes = [{
 		component: () => import('@/views/Login.vue')
 	},
 	{
-		path: '/ImproTable/table1',
-		name: 'table1',
-		component: () => import('@/views/ImproTable/table1.vue')
+		path: '/ImproTable/checkerManage',
+		name: 'checkerManage',
+		component: () => import('@/views/ImproTable/checkerManage.vue')
+	},
+	{
+		path: '/checkerLog/registerCheck',
+		name: 'registerCheck',
+		component: () => import('@/views/checkerLog/registerCheck.vue')
 	}
 ]
 

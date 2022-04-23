@@ -3,6 +3,7 @@
 
 		<div class="">
 			<el-button @click="submitData">提交</el-button>
+			<el-button @click="goPage('/checkerLog/registerCheck')">登记人维护</el-button>
 		</div>
 
 		<el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 60%"
@@ -79,6 +80,16 @@
 
 			submitData() {
 				console.log('提交了>>>', this.multipleSelection)
+			},
+			
+			goPage(name) {
+				console.log(name);
+				this.$router.push({
+					path: name,
+					params: {
+						
+					}
+				})
 			},
 
 			selMethod(row, index) {

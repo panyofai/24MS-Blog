@@ -7,12 +7,16 @@
 			</router-link>
 			<p class="date">2020-03-16</p>
 		</div>
-		<div class="card">
-			<!-- 博客id+1，实现 -->
-			<!-- <router-link :to="'/ImproTable/table1'">
+		<!-- <div class="card">
+			<router-link :to="'/ImproTable/table1'">
 				<p class="tit">表格</p>
-			</router-link> -->
-			<p class="tit" @click="goPage()">表格</p>
+			</router-link>
+			<p class="date">2020-03-16</p>
+		</div> -->
+		<div class="card">
+			<router-link :to="'/ImproTable/checkerManage'">
+				<p class="tit">白马会所名流-座驾表</p>
+			</router-link>
 			<p class="date">2020-03-16</p>
 		</div>
 	</div>
@@ -28,7 +32,13 @@
 		
 		methods: {
 			goPage(name) {
-				
+				console.log(name);
+				this.$Router.push({
+					path: name,
+					params: {
+						
+					}
+				})
 			}
 		},
 	}
